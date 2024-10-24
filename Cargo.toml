@@ -1,0 +1,5 @@
+[workspace]
+
+members = [
+    "nextgen", "s3id-4DC0", "vrf-rs-master",
+]

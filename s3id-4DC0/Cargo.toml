@@ -1,0 +1,29 @@
+[package]
+name = "s3id"
+version = "0.1.0"
+authors = ["XXXX-1 XXXX-2"]
+license = "Apache-2.0 OR MIT"
+edition = "2021"
+
+[dependencies]
+rand = "0.8"
+rayon = "1"
+sha2 = { version = "0.10", default-features = false, features = ["std"] }
+sha3 = { version = "0.10", default-features = false, features = ["std", "asm"] }
+thiserror = "1"
+groth-sahai = { git = "https://github.com/jdwhite48/groth-sahai-rs", rev = "22ecc73db72a6cebdd55d971078c56be9f8a270c" }
+ark-bls12-381 = { version = "0.4" }
+ark-ec = { version = "0.4", default-features = false }
+ark-ff = { version = "0.4", default-features = false }
+ark-serialize = { version = "0.4", default-features = false }
+rand_chacha = { version = "0.3" }
+
+
+[dev-dependencies]
+criterion = "0.5"
+num = "0.4"
+subtle = "2"
+
+[profile.bench]
+lto = true
+opt-level = 3
