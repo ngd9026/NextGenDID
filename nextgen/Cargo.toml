@@ -1,0 +1,48 @@
+[package]
+name = "nextgen"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+s3id = { path = "../s3id-4DC0" }
+vrf = { path = "../vrf-rs-master" }
+rand = "0.8"
+rayon = "1"
+sha2 = { version = "0.10", default-features = false, features = ["std"] }
+sha3 = { version = "0.10", default-features = false, features = ["std", "asm"] }
+thiserror = "1"
+groth-sahai = { git = "https://github.com/jdwhite48/groth-sahai-rs", rev = "22ecc73db72a6cebdd55d971078c56be9f8a270c" }
+ark-bls12-381 = { version = "0.4" }
+ark-ec = { version = "0.4", default-features = false }
+ark-ff = { version = "0.4", default-features = false }
+ark-serialize = { version = "0.4", default-features = false }
+rand_chacha = { version = "0.3" }
+failure = "0.1.8"
+openssl = "0.10.38"
+hmac-sha256 = "1.1.2"
+
+
+[dev-dependencies]
+criterion = "0.5"
+num = "0.4"
+subtle = "2"
+clap = "2.32.0"
+hex = "0.3.2"
+serde = { version = "1.0.90", features = ["derive"] }
+serde_json = "1.0.39"
+
+
+[features]
+vendored = ["openssl/vendored"]
+
+[[bench]]
+name = "nextgen"
+harness = false
+
+[[bench]]
+name = "vrf_benchmark"
+harness = false
+
+[profile.bench]
+lto = true
+opt-level = 3
